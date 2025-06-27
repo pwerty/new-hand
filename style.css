@@ -1,0 +1,16 @@
+/* 기본 마진과 패딩 제거 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 캔버스를 화면 전체에 채우기 */
+#c {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}

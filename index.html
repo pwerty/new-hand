@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Hand Tracking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 3D 렌더링을 위한 캔버스 -->
+    <canvas id="c"></canvas>
+    
+    <!-- MediaPipe가 사용할 웹캠 영상 (화면에 보이지 않음) -->
+    <video id="webcam" autoplay playsinline style="display: none;"></video>
+
+    <!-- ES6 모듈을 사용하기 위해 type="module" 지정 -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
