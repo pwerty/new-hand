@@ -80,10 +80,36 @@ async function loadHandModel() {
   const gltf = await loader.loadAsync('assets/models/modi.glb');
   rightHandModel = gltf.scene;
   scene.add(rightHandModel);
+
+  leftHandModel = rightHandModel.clone(true); // true 옵션으로 깊은 복사
+  leftHandModel.scale.x = -1; // X축으로 뒤집어 완벽한 거울상(왼손)을 만듭니다.
+  scene.add(leftHandModel);
+
   console.log("오른손과 왼손 모델이 준비되었습니다.");
 
 }
 
+/**
+ * 손가락 꺾임 방향과 엄지 축이 보정된 뼈 지도
+ */
+/**
+ * 손가락의 '0도' 포즈를 반영하고, 엄지와의 일관성을 높인 뼈 지도
+ */
+
+/**
+ * 리타겟팅을 위한 뼈의 연결 관계와 기본 축 정보를 정의합니다.
+/**
+ * 뼈의 기본 축(axis) 정보를 다시 포함한 최종 버전
+ */
+/**
+ * Blender에서 분석한 '정확한' 축 정보를 반영한 최종 Bone Map
+ */
+/**
+ * 뼈의 기본 축(axis) 정보를 다시 포함한 최종 버전
+ */
+/**
+ * [수정 제안] Blender에서 직접 확인한 '뼈의 기본 축(axis)'을 반영해야 하는 함수
+ */
 function getBoneMapping() {
   // --- 중요 ---
   // 아래 axis 값은 Blender에서 직접 확인한 값으로 수정해야 합니다.
@@ -94,7 +120,7 @@ function getBoneMapping() {
   const fingerAxis = new THREE.Vector3(0, 1, 0); 
 
   // 엄지 손가락의 기본 축 (일반 손가락과 다를 수 있음. Blender에서 확인한 값으로 변경)
-  const thumbAxis = new THREE.Vector3(1, 0, 0); // 엄지는 X축일 가능성도 있습니다.
+  const thumbAxis = new THREE.Vector3(0, 1, 0).normalize(); // 엄지는 X축일 가능성도 있습니다.
 
   return {
       // 손바닥에서 시작되는 가상 뼈들
